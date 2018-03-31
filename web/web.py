@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
+def index():
     my_set = MClient_rank()
     lists = rank_find_all()
     datas = data_sort(my_set,lists)

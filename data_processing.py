@@ -50,7 +50,8 @@ def data_sort(data):
         hot_pattern = re.compile(r'<td nowrap="">(.*)</td>') #热度正则
         hot = re.findall(hot_pattern, str(data[a+1]))[0]
 
-        time_pattern = re.compile(r'<td nowrap="">(.*)-(.*)-(2\d)')
+        time_pattern = re.compile(r'<td nowrap="">(.*)-(.*)-(..)')
+        times = re.findall(time_pattern, str(data[a+2]))
         for i in re.findall(time_pattern, str(data[a+2])):
             mon = i[1]
             day = i[2]

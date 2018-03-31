@@ -5,14 +5,20 @@ from data_processing import MClient,data_sort,new_insert,new_find,new_update
 
 if __name__ == '__main__':
     while(1):
-        html = 'http://news.ifeng.com/hotnews/'
-        response = requests.get(html)
-        response.encoding='utf-8'
-        soup = BeautifulSoup(response.text, 'lxml')
-        news = soup.select('tbody > tr')
-        news_data = soup.select('tbody > tr > td')
-        datas = data_sort(news_data)
-        my_set = MClient()
+        try:
+            html = 'http://news.ifeng.com/hotnews/'
+            response = requests.get(html)
+            response.encoding='utf-8'
+            soup = BeautifulSoup(response.text, 'lxml')
+            news = soup.select('tbody > tr')
+            news_data = soup.select('tbody > tr > td')
+            datas = data_sort(news_data)
+            print(datas)
+            my_set = MClient()
+        except:
+            print('发生异常')
+            continue
+
         for i in datas:
             print(i)
             if(new_find(i['url'])):
